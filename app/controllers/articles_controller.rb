@@ -7,6 +7,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
+    @comment = Comment.new
+    @comment.article_id = @article_id
   end
 
   def split_time
@@ -35,14 +38,14 @@ class ArticlesController < ApplicationController
     @article.update(article_params)
 
     flash.notice = "Article '#{@article.title}' has been updated!"
-  
+
     redirect_to article_path(@article)
   end
 
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    
+
     flash.notice = "Article '#{@article.title}' has been deleted!"
 
     redirect_to articles_path
