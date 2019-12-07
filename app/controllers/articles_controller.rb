@@ -12,10 +12,6 @@ class ArticlesController < ApplicationController
     @comment.article_id = @article_id
   end
 
-  def split_time
-    @article_time = Article.created_at.split(' ')[0]
-  end
-
   def new
     @article = Article.new
   end
@@ -50,4 +46,6 @@ class ArticlesController < ApplicationController
 
     redirect_to articles_path
   end
+
+  
 end
