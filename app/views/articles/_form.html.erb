@@ -1,4 +1,4 @@
-<%= form_for(@article) do |f| %>
+<%= form_for(@article, html: {multppart: true}) do |f| %>
   <ul>
     <% @article.errors.full_messages.each do |error| %>
       <li> <%= error %> </li>
@@ -18,6 +18,15 @@
     <%= f.text_field :tag_list %><br>
   </p>
   <p>
+    <% if @article.image.exists? %>
+      <%= image_tag @article.image.url %>
+    <% end %>
+    <%= f.label :image, "Add an image" %><br>
+    <%= f.file_field :image %><br>
+  </p>
+  <p>
     <%= f.submit %><br>
   </p>
 <% end %>
+
+<p><%= link_to "Back to post", article_path(@article) %></p>
