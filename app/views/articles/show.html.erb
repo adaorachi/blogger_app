@@ -16,5 +16,7 @@
 
 <%= render partial: 'comments/form' %>
 <%= link_to "<< Back to Article List", articles_path %> <br>
-<%= link_to "Edit Post", edit_article_path(@article) %> <br>
-<%= link_to "Remove Post", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+<% if logged_in? %>
+  <%= link_to "Edit Post", edit_article_path(@article) %> <br>
+  <%= link_to "Remove Post", article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+<% end %>
